@@ -12,31 +12,36 @@ class MovieItem extends StatelessWidget {
         //TODO:Impl details
       },
       child: Card(
-          elevation: 4, // Controls the shadow intensity
-          shape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(16.0), // Adjust the corner radius here
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: FractionallySizedBox(
-                      widthFactor: 1,
-                      heightFactor: 0.5,
-                      child: Image.network(
-                        imageBaseUrl + movie.posterPath,
-                      ))),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  movie.title,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-              )
-            ],
-          )),
+        elevation: 4, // Controls the shadow intensity
+        shape: RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.circular(16.0), // Adjust the corner radius here
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+                child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Container(
+                height: 150,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(imageBaseUrl + movie.posterPath),
+                        fit: BoxFit.fill)),
+              ),
+            )),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                movie.title,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
