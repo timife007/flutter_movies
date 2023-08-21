@@ -5,9 +5,9 @@ part 'dio_provider.g.dart';
 
 @riverpod
 Dio buildDioClient(BuildDioClientRef ref) {
-  final dio = Dio()..options = BaseOptions(baseUrl: baseUrl,queryParameters: {
-    'api_key': '693e82b69f08bfaa517a15be015bc36b'
-  });
+  final dio = Dio()
+    ..options = BaseOptions(
+        queryParameters: {'api_key': '693e82b69f08bfaa517a15be015bc36b'});
 
   dio.interceptors.addAll([]);
 
@@ -15,3 +15,4 @@ Dio buildDioClient(BuildDioClientRef ref) {
 }
 
 const String baseUrl = 'https://api.themoviedb.org/3/';
+const String imageBaseUrl = 'https://image.tmdb.org/t/p/w500/';

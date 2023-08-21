@@ -2,7 +2,7 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'movie_dto.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake,explicitToJson: true)
 class MovieDto {
   int id;
   String backdropPath;

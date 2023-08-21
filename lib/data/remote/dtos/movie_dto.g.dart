@@ -8,16 +8,16 @@ part of 'movie_dto.dart';
 
 MovieDto _$MovieDtoFromJson(Map<String, dynamic> json) => MovieDto(
       id: json['id'] as int,
-      backdropPath: json['backdropPath'] as String,
+      backdropPath: json['backdrop_path'] as String,
       title: json['title'] as String,
-      posterPath: json['posterPath'] as String,
-      voteAverage: (json['voteAverage'] as num).toDouble(),
+      posterPath: json['poster_path'] as String,
+      voteAverage: (json['vote_average'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$MovieDtoToJson(MovieDto instance) => <String, dynamic>{
       'id': instance.id,
-      'backdropPath': instance.backdropPath,
+      'backdrop_path': instance.backdropPath,
       'title': instance.title,
-      'posterPath': instance.posterPath,
-      'voteAverage': instance.voteAverage,
+      'poster_path': instance.posterPath,
+      'vote_average': instance.voteAverage,
     };

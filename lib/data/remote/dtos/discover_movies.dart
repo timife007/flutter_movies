@@ -5,12 +5,13 @@ import 'package:movies/data/remote/dtos/movie_dto.dart';
 
 part 'discover_movies.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(fieldRename: FieldRename.snake,explicitToJson: true)
 class DiscoverMovies {
-  int page;
-  int totalPages;
-  int totalResults;
-  List<MovieDto> moviesDto;
+  int? page;
+  int? totalPages;
+  int? totalResults;
+  @JsonKey(name: 'results')
+  List<MovieDto>? moviesDto;
   DiscoverMovies({
     required this.page,
     required this.totalPages,

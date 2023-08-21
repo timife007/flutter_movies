@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:logger/logger.dart';
 import 'package:movies/core/data_state.dart';
 import 'package:movies/core/extension.dart';
 import 'package:movies/data/remote/movies_api.dart';
@@ -12,11 +13,13 @@ class MovieRepositoryImpl extends MovieRepository {
   MovieRepositoryImpl(this.moviesApi);
   @override
   Future<DataState<List<Movie>>> getMovies() async {
+    var logger = Logger();
     final httpResponse = await moviesApi.getDiscoverMovies();
+    logger.d(httpResponse.data.moviesDto);
     try {
       if (httpResponse.response.statusCode == HttpStatus.ok) {
         return DataSuccess(httpResponse.data.moviesDto
-            .map((movieDto) => movieDto.toMovie())
+            ?.map((movieDto) => movieDto.toMovie())
             .toList());
       } else {
         return DataFailed(DioException(

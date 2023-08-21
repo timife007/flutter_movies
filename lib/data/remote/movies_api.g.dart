@@ -12,7 +12,9 @@ class _MoviesApi implements MoviesApi {
   _MoviesApi(
     this._dio, {
     this.baseUrl,
-  });
+  }) {
+    baseUrl ??= 'https://api.themoviedb.org/3/';
+  }
 
   final Dio _dio;
 

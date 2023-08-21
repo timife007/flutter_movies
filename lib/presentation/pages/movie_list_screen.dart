@@ -10,7 +10,12 @@ class MovieListScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final moviesProv = ref.watch(getMovieStateProvider);
     return moviesProv.when(data: (moviesProv) {
-      return MovieList(movies: moviesProv.data!);
+      if (moviesProv.data == null) {
+        return const Center(
+          child: Text('An error has occurred!'),
+        );
+      }
+      return MovieList(movies: moviesProv.data ?? List.empty());
     }, error: (error, stack) {
       return const Center(
         child: Text('An error has occurred!'),
